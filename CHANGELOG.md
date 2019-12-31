@@ -50,7 +50,7 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Added
 
-- [#9](https://github.com/zendframework/zend-expressive-csrf/pull/9) adds support for PHP 7.3.
+- [zendframework/zend-expressive-csrf#9](https://github.com/zendframework/zend-expressive-csrf/pull/9) adds support for PHP 7.3.
 
 ### Changed
 
@@ -72,13 +72,13 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Added
 
-- [#5](https://github.com/zendframework/zend-expressive-csrf/pull/5) adds
+- [zendframework/zend-expressive-csrf#5](https://github.com/zendframework/zend-expressive-csrf/pull/5) adds
   support for PSR-15.
 
 ### Changed
 
-- Updates minimum supported versions of both zend-expressive-session and
-  zend-expressive-flash to 1.0.0.
+- Updates minimum supported versions of both mezzio-session and
+  mezzio-flash to 1.0.0.
 
 ### Deprecated
 
@@ -86,8 +86,8 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Removed
 
-- [#5](https://github.com/zendframework/zend-expressive-csrf/pull/5) and
-  [#3](https://github.com/zendframework/zend-expressive-csrf/pull/3) remove
+- [zendframework/zend-expressive-csrf#5](https://github.com/zendframework/zend-expressive-csrf/pull/5) and
+  [zendframework/zend-expressive-csrf#3](https://github.com/zendframework/zend-expressive-csrf/pull/3) remove
   support for http-interop/http-middleware and
   http-interop/http-server-middleware.
 

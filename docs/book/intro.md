@@ -1,4 +1,4 @@
-# zend-expressive-csrf
+# mezzio-csrf
 
 [Cross-Site Request Forgery](https://en.wikipedia.org/wiki/Cross-site_request_forgery)
 (CSRF) is a security vector in which an unauthorized request is accepted by a server on
@@ -11,6 +11,6 @@ This token _expires_ after first submission or after a short amount of time,
 preventing replays or further submissions. If the token provided does not match
 what was originally sent, an error should be returned.
 
-zend-expressive-csrf provides utilities for both generating CSRF tokens, as well
+mezzio-csrf provides utilities for both generating CSRF tokens, as well
 as validating them. Tokens are stored within a session, and expire after any
 attempt to validate.

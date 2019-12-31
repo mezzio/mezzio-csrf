@@ -1,13 +1,14 @@
 <?php
+
 /**
- * @see       https://github.com/zendframework/zend-expressive-csrf for the canonical source repository
- * @copyright Copyright (c) 2017 Zend Technologies USA Inc. (https://www.zend.com)
- * @license   https://github.com/zendframework/zend-expressive-csrf/blob/master/LICENSE.md New BSD License
+ * @see       https://github.com/mezzio/mezzio-csrf for the canonical source repository
+ * @copyright https://github.com/mezzio/mezzio-csrf/blob/master/COPYRIGHT.md
+ * @license   https://github.com/mezzio/mezzio-csrf/blob/master/LICENSE.md New BSD License
  */
 
 declare(strict_types=1);
 
-namespace Zend\Expressive\Csrf;
+namespace Mezzio\Csrf;
 
 use Psr\Http\Message\ServerRequestInterface;
 

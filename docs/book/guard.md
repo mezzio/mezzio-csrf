@@ -1,10 +1,10 @@
 # CSRF Guards
 
 To provide CSRF protection, we provide an abstraction,
-`Zend\Expressive\Csrf\CsrfGuardInterface`:
+`Mezzio\Csrf\CsrfGuardInterface`:
 
 ```php
-namespace Zend\Expressive\Csrf;
+namespace Mezzio\Csrf;
 
 interface CsrfGuardInterface
 {
@@ -49,10 +49,10 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use Zend\Diactoros\Response\HtmlResponse;
-use Zend\Expressive\Csrf\CsrfGuardInterface;
-use Zend\Expressive\Csrf\CsrfMiddleware;
-use Zend\Expressive\Template\TemplateRendererInterface;
+use Laminas\Diactoros\Response\HtmlResponse;
+use Mezzio\Csrf\CsrfGuardInterface;
+use Mezzio\Csrf\CsrfMiddleware;
+use Mezzio\Template\TemplateRendererInterface;
 
 class DisplayBookFormHandler implements MiddlewareInterface
 {
@@ -86,11 +86,11 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use Zend\Diactoros\Response\EmptyResponse;
-use Zend\Diactoros\Response\HtmlResponse;
-use Zend\Expressive\Csrf\CsrfGuardInterface;
-use Zend\Expressive\Csrf\CsrfMiddleware;
-use Zend\Expressive\Template\TemplateRendererInterface;
+use Laminas\Diactoros\Response\EmptyResponse;
+use Laminas\Diactoros\Response\HtmlResponse;
+use Mezzio\Csrf\CsrfGuardInterface;
+use Mezzio\Csrf\CsrfMiddleware;
+use Mezzio\Template\TemplateRendererInterface;
 
 class ProcessBookFormHandler implements MiddlewareInterface
 {
@@ -120,29 +120,29 @@ This approach allows you to prevent CSRF attacks _separately_ from normal form
 validation, which can also simplify how your forms are structured.
 
 We provide two guard implementations, one using the base session container
-functionality from zend-expressive-session, and another using flash messages as
-provided in zend-expressive-flash.
+functionality from mezzio-session, and another using flash messages as
+provided in mezzio-flash.
 
 ## Session-based guard
 
-Session-based guards are provided via `Zend\Expressive\Csrf\SessionCsrfGuard`.
-This class expects a `Zend\Expressive\Session\SessionInterface` instance to its
+Session-based guards are provided via `Mezzio\Csrf\SessionCsrfGuard`.
+This class expects a `Mezzio\Session\SessionInterface` instance to its
 constructor, and it then uses that to both store a token in the session during
 `generateToken()`, and when validating a submitted token.
 
 ## Flash-based guard
 
-Flash guards are provided via `Zend\Expressive\Csrf\FlashCsrfGuard`.  This class
-expects a `Zend\Expressive\Flash\FlashMessagesInterface` instance to its
+Flash guards are provided via `Mezzio\Csrf\FlashCsrfGuard`.  This class
+expects a `Mezzio\Flash\FlashMessagesInterface` instance to its
 constructor, and it then uses that to store a token via a flash message when
 `generateToken()` is called, and to retrieve a previously flashed token when
 validating a submitted token.
 
-To use this guard, you will also need to install the zend-expressive-flash
+To use this guard, you will also need to install the mezzio-flash
 package:
 
 ```bash
-$ composer require zendframework/zend-expressive-flash
+$ composer require mezzio/mezzio-flash
 ```
 
 ## Guard factories
@@ -153,10 +153,10 @@ guards. Essentially, each guard implementation will also supply their own
 factory implementation, which the [CsrfMiddleware](middleware.md) will then
 consume to create a guard instance.
 
-`Zend\Expressive\Csrf\CsrfGuardFactoryInterface` defines the following:
+`Mezzio\Csrf\CsrfGuardFactoryInterface` defines the following:
 
 ```php
-namespace Zend\Expressive\Csrf;
+namespace Mezzio\Csrf;
 
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -168,11 +168,11 @@ interface CsrfGuardFactoryInterface
 
 We provide the following concrete factories:
 
-- `Zend\Expressive\Csrf\SessionCsrfGuardFactory`
-- `Zend\Expressive\Csrf\FlashCsrfGuardFactory`
+- `Mezzio\Csrf\SessionCsrfGuardFactory`
+- `Mezzio\Csrf\FlashCsrfGuardFactory`
 
 You will need to map the appropriate one to the
-`Zend\Expressive\Csrf\CsrfGuardFactoryInterface` service in your dependency
+`Mezzio\Csrf\CsrfGuardFactoryInterface` service in your dependency
 injection container. By default, we map this service to the
 `SessionCsrfGuardFactory`.
 

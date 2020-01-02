@@ -8,3 +8,6 @@ nav:
 site_name: mezzio-csrf
 site_description: 'CSRF protection for PSR-7 applications using mezzio-session'
 repo_url: 'https://github.com/mezzio/mezzio-csrf'
+extra:
+    project: Mezzio
+    project_url: 'https://docs.mezzio.dev'

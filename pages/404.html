@@ -6,10 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="CSRF protection for PSR-7 applications using mezzio-session">  
-    <link rel="canonical" href="https://docs.mezzio.dev/middleware/">
     <link rel="shortcut icon" href="/img/trademark-laminas-foundation-rgb.svg">
 
-    <title>CSRF Middleware - mezzio-csrf - Laminas Docs</title>
+    <title>mezzio-csrf - Laminas Docs</title>
 
     <link rel="stylesheet" href="/css/styles.css">
 </head>
@@ -59,7 +58,7 @@
                     
     <div class="subnavigation hidden-print">
         <h4 class="subnavigation__title">
-            <a href="..">mezzio-csrf</a>
+            <a href="../.">mezzio-csrf</a>
         </h4>
 
         <h5 class="subnavigation__subtitle">Table of Contents</h5>
@@ -101,8 +100,8 @@
                     
                     
                         
-                            <li class="subnavigation__list-item subnavigation__list-item--active">
-                                <a href="./" class="subnavigation__link">CSRF Middleware</a>
+                            <li class="subnavigation__list-item ">
+                                <a href="../middleware/" class="subnavigation__link">CSRF Middleware</a>
                             </li>
                         
                     
@@ -167,124 +166,21 @@
         <div class="row">
             <div class="col-md-2 col-sm-12">
                 
-    
-
-    
-    
-        <div class="toc">
-            <h6 class="toc__headline">On this page</h6>
-            <ul class="toc__list">
-                
-                    <li class="toc__entry">
-                        <a href="#registering-the-middleware" class="toc__link">Registering the middleware</a>
-                    </li>
-                
-            </ul>
-        </div>
-    
-
             </div>
             <div class="col-md-7 col-sm-12 content" role="main" data-spy="scroll" data-target=".toc">
                 
-                    <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-        
-            <li class="breadcrumb-item"><a href="">Overview</a></li>
 
-            
-                <li class="breadcrumb-item"><a href="..">mezzio-csrf</a></li>
+<h1 class="content__title">404</h1>
+<blockquote>
+    <h3>Something went wrong!</h3>
+    <p>
+        We're sorry, but the page you are looking for does not exist.
+    </p>
+</blockquote>
 
-                
-
-                <li class="breadcrumb-item active" aria-current="page">CSRF Middleware</li>
-            
-        
-    </ol>
-</nav>
+<a href="../." class="btn btn-default" role="button">Go to homepage</a>
 
 
-
-
-
-
-    
-    
-
-    <h1 id="csrf-guard-middleware">CSRF Guard Middleware</h1>
-<p>Since CSRF token generation and validation relies on request artifacts, we
-provide <code>Mezzio\Csrf\CsrfMiddleware</code> to generate the appropriate guard
-instance and pass it into a request attribute.</p>
-<p>This approach allows you to have a single location or specific locations where
-CSRF guards are generated, which can then be used by any middleware in your
-application.</p>
-<p>The <code>CsrfMiddleware</code> has the following constructor arguments:</p>
-<ul>
-<li><code>CsrfGuardFactoryInterface $guardFactory</code>: a concrete instance to use for
-  generating the CSRF guard instance.</li>
-<li><code>string $attributeKey</code>: the name of the request attribute in which to store
-  the CSRF guard instance. Defaults to the <code>CsrfMiddleware::GUARD_ATTRIBUTE</code>
-  ("csrf").</li>
-</ul>
-<p>We provide and map a factory for the middleware,
-<code>Mezzio\Csrf\CsrfMiddlewareFactory</code>; that factory depends on having the
-service <code>Mezzio\Csrf\CsrfGuardFactoryInterface</code> defined (by default it
-is, and points to the <code>SessionCsrfGuard</code> implementation).</p>
-<p>If you want to override the defaults, create and map a custom factory.</p>
-<h2 id="registering-the-middleware">Registering the middleware</h2>
-<p>The middleware depends on the <code>Mezzio\Session\SessionMiddleware</code>, and
-must be piped <strong>AFTER</strong> that middleware. It can be piped either in the
-application pipeline, or within routed middleware.</p>
-<p>As an example, in <code>config/pipeline.php</code>:</p>
-<pre class=codehilite><code class=language-php>$app-&gt;pipe(\Mezzio\Session\SessionMiddleware::class);
-$app-&gt;pipe(\Mezzio\Csrf\CsrfMiddleware::class);</code></pre>
-<p>Within routed middleware:</p>
-<pre class=codehilite><code class=language-php>$app-&gt;get('/user/login', [
-    \Mezzio\Session\SessionMiddleware::class,
-    \Mezzio\Csrf\CsrfMiddleware::class,
-    UserLoginFormHandler::class,
-]);
-
-$app-&gt;post('/user/login', [
-    \Mezzio\Session\SessionMiddleware::class,
-    \Mezzio\Csrf\CsrfMiddleware::class,
-    ProcessUserLoginHandler::class,
-]);</code></pre>
-
-
-
-
-    <nav>
-    <ul class="page-nav hidden-print">
-
-        
-        <li class="page-nav__item">
-            
-                <a rel="prev" class="page-nav__link page-nav__link--prev" href="../guard/">
-                    <i class="fa fa-chevron-left"></i> Previous
-                </a>
-            
-        </li>
-
-        
-        <li class="page-nav__item">
-            
-        </li>
-    </ul>
-</nav>
-
-
-
-
-    <div class="help-wanted">
-        <p>
-            Found a mistake or want to contribute to the documentation?
-            <a href="https://github.com/mezzio/mezzio-csrf/edit/master/docs/book/middleware.md" target="_blank" class="help-wanted__link">
-                Edit this page on GitHub!
-            </a>
-        </p>
-    </div>
-
-                
             </div>
             <div class="col-md-3 col-sm-12 sidebar">
                 
@@ -299,7 +195,7 @@ $app-&gt;post('/user/login', [
                     
     <div class="subnavigation hidden-print">
         <h4 class="subnavigation__title">
-            <a href="..">mezzio-csrf</a>
+            <a href="../.">mezzio-csrf</a>
         </h4>
 
         <h5 class="subnavigation__subtitle">Table of Contents</h5>
@@ -341,8 +237,8 @@ $app-&gt;post('/user/login', [
                     
                     
                         
-                            <li class="subnavigation__list-item subnavigation__list-item--active">
-                                <a href="./" class="subnavigation__link">CSRF Middleware</a>
+                            <li class="subnavigation__list-item ">
+                                <a href="../middleware/" class="subnavigation__link">CSRF Middleware</a>
                             </li>
                         
                     

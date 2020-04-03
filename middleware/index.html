@@ -294,10 +294,11 @@ is, and points to the <code>SessionCsrfGuard</code> implementation).</p>
 must be piped <strong>AFTER</strong> that middleware. It can be piped either in the
 application pipeline, or within routed middleware.</p>
 <p>As an example, in <code>config/pipeline.php</code>:</p>
-<pre class=codehilite><code class=language-php>$app-&gt;pipe(\Mezzio\Session\SessionMiddleware::class);
+<pre class="highlight"><code class="language-php">$app-&gt;pipe(\Mezzio\Session\SessionMiddleware::class);
 $app-&gt;pipe(\Mezzio\Csrf\CsrfMiddleware::class);</code></pre>
+
 <p>Within routed middleware:</p>
-<pre class=codehilite><code class=language-php>$app-&gt;get('/user/login', [
+<pre class="highlight"><code class="language-php">$app-&gt;get('/user/login', [
     \Mezzio\Session\SessionMiddleware::class,
     \Mezzio\Csrf\CsrfMiddleware::class,
     UserLoginFormHandler::class,

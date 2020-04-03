@@ -280,7 +280,7 @@
     <h1 id="csrf-guards">CSRF Guards</h1>
 <p>To provide CSRF protection, we provide an abstraction,
 <code>Mezzio\Csrf\CsrfGuardInterface</code>:</p>
-<pre class=codehilite><code class=language-php>namespace Mezzio\Csrf;
+<pre class="highlight"><code class="language-php">namespace Mezzio\Csrf;
 
 interface CsrfGuardInterface
 {
@@ -303,6 +303,7 @@ interface CsrfGuardInterface
      */
     public function validateToken(string $token, string $csrfKey = '__csrf') : bool;
 }</code></pre>
+
 <p>Because guards will be backed by different mechanisms, we provide
 <a href="../middleware/">CsrfMiddleware</a> that will generate the guard based on
 configuration, and inject it into the request passed to later middleware; this
@@ -314,7 +315,7 @@ on request data) from your own middleware.</p>
 <li><em>Validate</em> a token in middleware validating that form.</li>
 </ul>
 <p>As an example, we could have middleware displaying a form as follows:</p>
-<pre class=codehilite><code class=language-php>namespace Books;
+<pre class="highlight"><code class="language-php">namespace Books;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -346,8 +347,9 @@ class DisplayBookFormHandler implements MiddlewareInterface
         );
     }
 }</code></pre>
+
 <p>When we're ready to process it, we then might have the following middleware:</p>
-<pre class=codehilite><code class=language-php>namespace Books;
+<pre class="highlight"><code class="language-php">namespace Books;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -381,6 +383,7 @@ class ProcessBookFormHandler implements MiddlewareInterface
         // process form normally and return a response...
     }
 }</code></pre>
+
 <p>This approach allows you to prevent CSRF attacks <em>separately</em> from normal form
 validation, which can also simplify how your forms are structured.</p>
 <p>We provide two guard implementations, one using the base session container
@@ -399,7 +402,8 @@ constructor, and it then uses that to store a token via a flash message when
 validating a submitted token.</p>
 <p>To use this guard, you will also need to install the mezzio-flash
 package:</p>
-<pre class=codehilite><code class=language-bash>$ composer require mezzio/mezzio-flash</code></pre>
+<pre class="highlight"><code class="language-bash">$ composer require mezzio/mezzio-flash</code></pre>
+
 <h2 id="guard-factories">Guard factories</h2>
 <p>Because guard implementations generally require request-based artifacts in order
 to do their work, we provide an interface describing a factory for generating
@@ -407,7 +411,7 @@ guards. Essentially, each guard implementation will also supply their own
 factory implementation, which the <a href="../middleware/">CsrfMiddleware</a> will then
 consume to create a guard instance.</p>
 <p><code>Mezzio\Csrf\CsrfGuardFactoryInterface</code> defines the following:</p>
-<pre class=codehilite><code class=language-php>namespace Mezzio\Csrf;
+<pre class="highlight"><code class="language-php">namespace Mezzio\Csrf;
 
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -415,6 +419,7 @@ interface CsrfGuardFactoryInterface
 {
     public function createGuardFromRequest(ServerRequestInterface $request) : CsrfGuardInterface;
 }</code></pre>
+
 <p>We provide the following concrete factories:</p>
 <ul>
 <li><code>Mezzio\Csrf\SessionCsrfGuardFactory</code></li>
@@ -427,7 +432,7 @@ injection container. By default, we map this service to the
 <p>You may also compose the <code>CsrfGuardFactoryInterface</code> directly in your own
 middleware. When you do, you will have to manually use it to create the guard
 instance prior to generating or validating a token:</p>
-<pre class=codehilite><code class=language-php>class SomeHandler implements MiddlewareInterface
+<pre class="highlight"><code class="language-php">class SomeHandler implements MiddlewareInterface
 {
     private $guardFactory;
 

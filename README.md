@@ -1,7 +1,6 @@
 # mezzio-csrf
 
-[![Build Status](https://travis-ci.com/mezzio/mezzio-csrf.svg?branch=master)](https://travis-ci.com/mezzio/mezzio-csrf)
-[![Coverage Status](https://coveralls.io/repos/github/mezzio/mezzio-csrf/badge.svg?branch=master)](https://coveralls.io/github/mezzio/mezzio-csrf?branch=master)
+[![Build Status](https://github.com/mezzio/mezzio-csrf/actions/workflows/continuous-integration.yml/badge.svg)](https://github.com/mezzio/mezzio-csrf/actions/workflows/continuous-integration.yml)
 
 Provides CSRF token generation and validation for PSR-7 applications, using
 [mezzio-session](https://docs.mezzio.dev/mezzio-session),

@@ -38,7 +38,7 @@
     "require-dev": {
         "laminas/laminas-coding-standard": "~2.1.0",
         "mezzio/mezzio-flash": "^1.0",
-        "phpunit/phpunit": "^7.0.2"
+        "phpunit/phpunit": "^9.3"
     },
     "conflict": {
         "phpspec/prophecy": "<1.7.2"

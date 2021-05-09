@@ -12,15 +12,20 @@ namespace MezzioTest\Csrf;
 
 use Mezzio\Csrf\FlashCsrfGuard;
 use Mezzio\Flash\FlashMessagesInterface;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Prophecy\Argument;
 
 class FlashCsrfGuardTest extends TestCase
 {
-    public function setUp()
+    /** @var MockObject<FlashMessagesInterface>  */
+    private $flash;
+    /** @var FlashCsrfGuard */
+    private $guard;
+
+    protected function setUp(): void
     {
-        $this->flash = $this->prophesize(FlashMessagesInterface::class);
-        $this->guard = new FlashCsrfGuard($this->flash->reveal());
+        $this->flash = $this->createMock(FlashMessagesInterface::class);
+        $this->guard = new FlashCsrfGuard($this->flash);
     }
 
     public function keyNameProvider(): array
@@ -34,22 +39,21 @@ class FlashCsrfGuardTest extends TestCase
     /**
      * @dataProvider keyNameProvider
      */
-    public function testGenerateTokenStoresTokenInFlashAndReturnsIt(string $keyName)
+    public function testGenerateTokenStoresTokenInFlashAndReturnsIt(string $keyName): void
     {
         $expected = '';
-        $this->flash
-            ->flash(
+        $this->flash->expects(self::atLeastOnce())->method('flash')
+            ->with(
                 $keyName,
-                Argument::that(function ($token) use (&$expected) {
-                    $this->assertRegExp('/^[a-f0-9]{32}$/', $token);
+                $this->callback(function ($token) use (&$expected) {
+                    $this->assertMatchesRegularExpression('/^[a-f0-9]{32}$/', $token);
                     $expected = $token;
-                    return $token;
+                    return true;
                 })
-            )
-            ->shouldBeCalled();
+            );
 
         $token = $this->guard->generateToken($keyName);
-        $this->assertSame($expected, $token);
+        $this->assertSame((string) $expected, $token);
     }
 
     public function tokenValidationProvider(): array
@@ -75,8 +79,11 @@ class FlashCsrfGuardTest extends TestCase
         string $csrfKey,
         string $flashTokenValue,
         string $assertion
-    ) {
-        $this->flash->getFlash($csrfKey, '')->willReturn($flashTokenValue);
+    ): void {
+        $this->flash->expects(self::atLeastOnce())
+                    ->method('getFlash')
+                    ->with($csrfKey, '')
+                    ->willReturn($flashTokenValue);
         $this->$assertion($this->guard->validateToken($token, $csrfKey));
     }
 }

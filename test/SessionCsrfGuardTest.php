@@ -12,15 +12,20 @@ namespace MezzioTest\Csrf;
 
 use Mezzio\Csrf\SessionCsrfGuard;
 use Mezzio\Session\SessionInterface;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Prophecy\Argument;
 
 class SessionCsrfGuardTest extends TestCase
 {
-    public function setUp()
+    /** @var MockObject<SessionInterface> */
+    private $session;
+    /** @var SessionCsrfGuard */
+    private $guard;
+
+    protected function setUp(): void
     {
-        $this->session = $this->prophesize(SessionInterface::class);
-        $this->guard   = new SessionCsrfGuard($this->session->reveal());
+        $this->session = $this->createMock(SessionInterface::class);
+        $this->guard   = new SessionCsrfGuard($this->session);
     }
 
     public function keyNameProvider(): array
@@ -34,19 +39,18 @@ class SessionCsrfGuardTest extends TestCase
     /**
      * @dataProvider keyNameProvider
      */
-    public function testGenerateTokenStoresTokenInSessionAndReturnsIt(string $keyName)
+    public function testGenerateTokenStoresTokenInSessionAndReturnsIt(string $keyName): void
     {
         $expected = '';
-        $this->session
-            ->set(
+        $this->session->expects(self::atLeastOnce())->method('set')
+            ->with(
                 $keyName,
-                Argument::that(function ($token) use (&$expected) {
-                    $this->assertRegExp('/^[a-f0-9]{32}$/', $token);
+                $this->callback(function ($token) use (&$expected) {
+                    $this->assertMatchesRegularExpression('/^[a-f0-9]{32}$/', $token);
                     $expected = $token;
-                    return $token;
+                    return true;
                 })
-            )
-            ->shouldBeCalled();
+            );
 
         $token = $this->guard->generateToken($keyName);
         $this->assertSame($expected, $token);
@@ -75,9 +79,9 @@ class SessionCsrfGuardTest extends TestCase
         string $csrfKey,
         string $sessionTokenValue,
         string $assertion
-    ) {
-        $this->session->get($csrfKey, '')->willReturn($sessionTokenValue);
-        $this->session->unset($csrfKey)->shouldBeCalled();
+    ): void {
+        $this->session->expects(self::atLeastOnce())->method('get')->with($csrfKey, '')->willReturn($sessionTokenValue);
+        $this->session->expects(self::atLeastOnce())->method('unset')->with($csrfKey);
         $this->$assertion($this->guard->validateToken($token, $csrfKey));
     }
 }

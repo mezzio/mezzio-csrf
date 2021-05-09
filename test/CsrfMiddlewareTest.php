@@ -40,7 +40,10 @@ class CsrfMiddlewareTest extends TestCase
         $this->assertAttributeSame('alternate-key', 'attributeKey', $middleware);
     }
 
-    public function attributeKeyProvider()
+    /**
+     * @return array<string, array<null|string>>
+     */
+    public function attributeKeyProvider(): array
     {
         return [
             'null-default' => [null],
@@ -51,10 +54,10 @@ class CsrfMiddlewareTest extends TestCase
     /**
      * @dataProvider attributeKeyProvider
      */
-    public function testProcessDelegatesNewRequestContainingGeneratedGuardInstance($attributeKey)
+    public function testProcessDelegatesNewRequestContainingGeneratedGuardInstance(?string $attributeKey = null): void
     {
-        $guard = $this->prophesize(CsrfGuardInterface::class)->reveal();
-        $request = $this->prophesize(ServerRequestInterface::class);
+        $guard    = $this->prophesize(CsrfGuardInterface::class)->reveal();
+        $request  = $this->prophesize(ServerRequestInterface::class);
         $response = $this->prophesize(ResponseInterface::class)->reveal();
 
         $middleware = $attributeKey

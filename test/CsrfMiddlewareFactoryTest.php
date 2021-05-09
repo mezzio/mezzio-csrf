@@ -21,7 +21,7 @@ class CsrfMiddlewareFactoryTest extends TestCase
     public function testFactoryReturnsMiddlewareUsingDefaultAttributeAndConfiguredGuardFactory()
     {
         $guardFactory = $this->prophesize(CsrfGuardFactoryInterface::class)->reveal();
-        $container = $this->prophesize(ContainerInterface::class);
+        $container    = $this->prophesize(ContainerInterface::class);
         $container->get(CsrfGuardFactoryInterface::class)->willReturn($guardFactory);
 
         $factory = new CsrfMiddlewareFactory();

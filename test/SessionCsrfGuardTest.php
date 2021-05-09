@@ -20,10 +20,10 @@ class SessionCsrfGuardTest extends TestCase
     public function setUp()
     {
         $this->session = $this->prophesize(SessionInterface::class);
-        $this->guard = new SessionCsrfGuard($this->session->reveal());
+        $this->guard   = new SessionCsrfGuard($this->session->reveal());
     }
 
-    public function keyNameProvider() : array
+    public function keyNameProvider(): array
     {
         return [
             'default' => ['__csrf'],
@@ -52,7 +52,7 @@ class SessionCsrfGuardTest extends TestCase
         $this->assertSame($expected, $token);
     }
 
-    public function tokenValidationProvider() : array
+    public function tokenValidationProvider(): array
     {
         // @codingStandardsIgnoreStart
         return [

@@ -23,7 +23,7 @@ class FlashCsrfGuardTest extends TestCase
         $this->guard = new FlashCsrfGuard($this->flash->reveal());
     }
 
-    public function keyNameProvider() : array
+    public function keyNameProvider(): array
     {
         return [
             'default' => ['__csrf'],
@@ -52,7 +52,7 @@ class FlashCsrfGuardTest extends TestCase
         $this->assertSame($expected, $token);
     }
 
-    public function tokenValidationProvider() : array
+    public function tokenValidationProvider(): array
     {
         // @codingStandardsIgnoreStart
         return [

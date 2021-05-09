@@ -32,7 +32,7 @@ class FlashCsrfGuardFactoryTest extends TestCase
         $this->assertAttributeSame('alternate-attribute', 'attributeKey', $factory);
     }
 
-    public function attributeKeyProvider() : array
+    public function attributeKeyProvider(): array
     {
         return [
             'default' => [FlashMessageMiddleware::FLASH_ATTRIBUTE],
@@ -59,7 +59,7 @@ class FlashCsrfGuardFactoryTest extends TestCase
      */
     public function testCreateGuardFromRequestReturnsCsrfGuardWithSessionWhenPresent(string $attribute)
     {
-        $flash = $this->prophesize(FlashMessagesInterface::class)->reveal();
+        $flash   = $this->prophesize(FlashMessagesInterface::class)->reveal();
         $request = $this->prophesize(ServerRequestInterface::class);
         $request->getAttribute($attribute, false)->willReturn($flash);
 

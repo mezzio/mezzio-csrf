@@ -32,7 +32,7 @@ class SessionCsrfGuardFactoryTest extends TestCase
         $this->assertAttributeSame('alternate-attribute', 'attributeKey', $factory);
     }
 
-    public function attributeKeyProvider() : array
+    public function attributeKeyProvider(): array
     {
         return [
             'default' => [SessionMiddleware::SESSION_ATTRIBUTE],

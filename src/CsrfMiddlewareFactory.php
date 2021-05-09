@@ -14,6 +14,9 @@ use Psr\Container\ContainerInterface;
 
 class CsrfMiddlewareFactory
 {
+    /**
+     * @return CsrfMiddleware
+     */
     public function __invoke(ContainerInterface $container)
     {
         return new CsrfMiddleware(

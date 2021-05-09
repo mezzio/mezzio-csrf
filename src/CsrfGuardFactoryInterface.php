@@ -14,5 +14,5 @@ use Psr\Http\Message\ServerRequestInterface;
 
 interface CsrfGuardFactoryInterface
 {
-    public function createGuardFromRequest(ServerRequestInterface $request) : CsrfGuardInterface;
+    public function createGuardFromRequest(ServerRequestInterface $request): CsrfGuardInterface;
 }

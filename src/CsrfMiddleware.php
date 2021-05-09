@@ -27,16 +27,12 @@ use Psr\Http\Server\RequestHandlerInterface;
  */
 class CsrfMiddleware implements MiddlewareInterface
 {
-    const GUARD_ATTRIBUTE = 'csrf';
+    public const GUARD_ATTRIBUTE = 'csrf';
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $attributeKey;
 
-    /**
-     * @var CsrfGuardFactoryInterface
-     */
+    /** @var CsrfGuardFactoryInterface */
     private $guardFactory;
 
     public function __construct(
@@ -47,7 +43,7 @@ class CsrfMiddleware implements MiddlewareInterface
         $this->attributeKey = $attributeKey;
     }
 
-    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler) : ResponseInterface
+    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         $guard = $this->guardFactory->createGuardFromRequest($request);
         return $handler->handle($request->withAttribute($this->attributeKey, $guard));

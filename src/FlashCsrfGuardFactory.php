@@ -16,9 +16,7 @@ use Psr\Http\Message\ServerRequestInterface;
 
 class FlashCsrfGuardFactory implements CsrfGuardFactoryInterface
 {
-    /**
-     * @var string
-     */
+    /** @var string */
     private $attributeKey;
 
     public function __construct(string $attributeKey = FlashMessageMiddleware::FLASH_ATTRIBUTE)
@@ -26,7 +24,7 @@ class FlashCsrfGuardFactory implements CsrfGuardFactoryInterface
         $this->attributeKey = $attributeKey;
     }
 
-    public function createGuardFromRequest(ServerRequestInterface $request) : CsrfGuardInterface
+    public function createGuardFromRequest(ServerRequestInterface $request): CsrfGuardInterface
     {
         $flashMessages = $request->getAttribute($this->attributeKey, false);
         if (! $flashMessages instanceof FlashMessagesInterface) {

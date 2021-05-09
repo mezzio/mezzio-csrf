@@ -20,6 +20,9 @@ class ConfigProviderTest extends TestCase
         $this->provider = new ConfigProvider();
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function testInvocationReturnsArray()
     {
         $config = ($this->provider)();

@@ -5,25 +5,44 @@ declare(strict_types=1);
 namespace MezzioTest\Csrf;
 
 use Mezzio\Csrf\CsrfGuardFactoryInterface;
+use Mezzio\Csrf\CsrfGuardInterface;
 use Mezzio\Csrf\CsrfMiddleware;
 use Mezzio\Csrf\CsrfMiddlewareFactory;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 
 class CsrfMiddlewareFactoryTest extends TestCase
 {
-    public function testFactoryReturnsMiddlewareUsingDefaultAttributeAndConfiguredGuardFactory()
+    public function testFactoryReturnsMiddlewareUsingDefaultAttributeAndConfiguredGuardFactory(): void
     {
-        $guardFactory = $this->prophesize(CsrfGuardFactoryInterface::class)->reveal();
-        $container = $this->prophesize(ContainerInterface::class);
-        $container->get(CsrfGuardFactoryInterface::class)->willReturn($guardFactory);
+        $guardFactory = $this->createMock(CsrfGuardFactoryInterface::class);
+        $container    = $this->createMock(ContainerInterface::class);
 
-        $factory = new CsrfMiddlewareFactory();
+        $container->expects(self::atLeastOnce())
+                  ->method('get')
+                  ->with(CsrfGuardFactoryInterface::class)
+                  ->willReturn($guardFactory);
 
-        $middleware = $factory($container->reveal());
+        $factory    = new CsrfMiddlewareFactory();
+        $middleware = $factory($container);
 
         $this->assertInstanceOf(CsrfMiddleware::class, $middleware);
-        $this->assertAttributeSame($guardFactory, 'guardFactory', $middleware);
-        $this->assertAttributeSame($middleware::GUARD_ATTRIBUTE, 'attributeKey', $middleware);
+
+        $request = $this->createMock(ServerRequestInterface::class);
+        $guard   = $this->createMock(CsrfGuardInterface::class);
+
+        $guardFactory->expects(self::atLeastOnce())
+                     ->method('createGuardFromRequest')
+                     ->with($request)
+                     ->willReturn($guard);
+
+        $request->expects(self::atLeastOnce())
+                ->method('withAttribute')
+                ->with($middleware::GUARD_ATTRIBUTE, $guard)
+                ->willReturn($request);
+
+        $middleware->process($request, $this->createMock(RequestHandlerInterface::class));
     }
 }

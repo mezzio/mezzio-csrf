@@ -15,7 +15,7 @@ interface CsrfGuardInterface
      *
      * CSRF tokens should EXPIRE after the first hop.
      */
-    public function generateToken(string $keyName = '__csrf') : string;
+    public function generateToken(string $keyName = '__csrf'): string;
 
     /**
      * Validate whether a submitted CSRF token is the same as the one stored in
@@ -23,5 +23,5 @@ interface CsrfGuardInterface
      *
      * CSRF tokens should EXPIRE after the first hop.
      */
-    public function validateToken(string $token, string $csrfKey = '__csrf') : bool;
+    public function validateToken(string $token, string $csrfKey = '__csrf'): bool;
 }

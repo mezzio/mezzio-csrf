@@ -14,19 +14,33 @@ use Psr\Http\Message\ServerRequestInterface;
 
 class SessionCsrfGuardFactoryTest extends TestCase
 {
-    public function testConstructionUsesSaneDefaults()
+    public function testConstructionUsesSaneDefaults(): void
     {
         $factory = new SessionCsrfGuardFactory();
-        $this->assertAttributeSame(SessionMiddleware::SESSION_ATTRIBUTE, 'attributeKey', $factory);
+        $session = $this->createMock(SessionInterface::class);
+        $request = $this->createMock(ServerRequestInterface::class);
+        $request->expects(self::atLeastOnce())
+                ->method('getAttribute')
+                ->with(SessionMiddleware::SESSION_ATTRIBUTE, false)
+                ->willReturn($session);
+
+        $factory->createGuardFromRequest($request);
     }
 
-    public function testConstructionAllowsPassingAttributeKey()
+    public function testConstructionAllowsPassingAttributeKey(): void
     {
         $factory = new SessionCsrfGuardFactory('alternate-attribute');
-        $this->assertAttributeSame('alternate-attribute', 'attributeKey', $factory);
+        $session = $this->createMock(SessionInterface::class);
+        $request = $this->createMock(ServerRequestInterface::class);
+        $request->expects(self::atLeastOnce())
+                ->method('getAttribute')
+                ->with('alternate-attribute', false)
+                ->willReturn($session);
+
+        $factory->createGuardFromRequest($request);
     }
 
-    public function attributeKeyProvider() : array
+    public function attributeKeyProvider(): array
     {
         return [
             'default' => [SessionMiddleware::SESSION_ATTRIBUTE],
@@ -37,29 +51,29 @@ class SessionCsrfGuardFactoryTest extends TestCase
     /**
      * @dataProvider attributeKeyProvider
      */
-    public function testCreateGuardFromRequestRaisesExceptionIfAttributeDoesNotContainSession(string $attribute)
+    public function testCreateGuardFromRequestRaisesExceptionIfAttributeDoesNotContainSession(string $attribute): void
     {
-        $request = $this->prophesize(ServerRequestInterface::class);
-        $request->getAttribute($attribute, false)->willReturn(false);
+        $request = $this->createMock(ServerRequestInterface::class);
+        $request->expects(self::atLeastOnce())->method('getAttribute')->with($attribute, false)->willReturn(false);
 
         $factory = new SessionCsrfGuardFactory($attribute);
 
         $this->expectException(Exception\MissingSessionException::class);
-        $factory->createGuardFromRequest($request->reveal());
+        $factory->createGuardFromRequest($request);
     }
 
     /**
      * @dataProvider attributeKeyProvider
      */
-    public function testCreateGuardFromRequestReturnsCsrfGuardWithSessionWhenPresent(string $attribute)
+    public function testCreateGuardFromRequestReturnsCsrfGuardWithSessionWhenPresent(string $attribute): void
     {
-        $session = $this->prophesize(SessionInterface::class)->reveal();
-        $request = $this->prophesize(ServerRequestInterface::class);
-        $request->getAttribute($attribute, false)->willReturn($session);
+        $session = $this->createMock(SessionInterface::class);
+        $request = $this->createMock(ServerRequestInterface::class);
+        $request->expects(self::atLeastOnce())->method('getAttribute')->with($attribute, false)->willReturn($session);
 
         $factory = new SessionCsrfGuardFactory($attribute);
 
-        $guard = $factory->createGuardFromRequest($request->reveal());
+        $guard = $factory->createGuardFromRequest($request);
         $this->assertInstanceOf(SessionCsrfGuard::class, $guard);
     }
 }

@@ -202,7 +202,7 @@
             </div>
 
             
-            <div class="col-4 text-sm-right">
+            <div class="col-4 text-right">
                 
                     
 
@@ -303,7 +303,6 @@ interface CsrfGuardInterface
      */
     public function validateToken(string $token, string $csrfKey = '__csrf') : bool;
 }</code></pre>
-
 <p>Because guards will be backed by different mechanisms, we provide
 <a href="../middleware/">CsrfMiddleware</a> that will generate the guard based on
 configuration, and inject it into the request passed to later middleware; this
@@ -347,7 +346,6 @@ class DisplayBookFormHandler implements MiddlewareInterface
         );
     }
 }</code></pre>
-
 <p>When we're ready to process it, we then might have the following middleware:</p>
 <pre class="highlight"><code class="language-php">namespace Books;
 
@@ -383,7 +381,6 @@ class ProcessBookFormHandler implements MiddlewareInterface
         // process form normally and return a response...
     }
 }</code></pre>
-
 <p>This approach allows you to prevent CSRF attacks <em>separately</em> from normal form
 validation, which can also simplify how your forms are structured.</p>
 <p>We provide two guard implementations, one using the base session container
@@ -403,7 +400,6 @@ validating a submitted token.</p>
 <p>To use this guard, you will also need to install the mezzio-flash
 package:</p>
 <pre class="highlight"><code class="language-bash">$ composer require mezzio/mezzio-flash</code></pre>
-
 <h2 id="guard-factories">Guard factories</h2>
 <p>Because guard implementations generally require request-based artifacts in order
 to do their work, we provide an interface describing a factory for generating
@@ -419,7 +415,6 @@ interface CsrfGuardFactoryInterface
 {
     public function createGuardFromRequest(ServerRequestInterface $request) : CsrfGuardInterface;
 }</code></pre>
-
 <p>We provide the following concrete factories:</p>
 <ul>
 <li><code>Mezzio\Csrf\SessionCsrfGuardFactory</code></li>
@@ -561,6 +556,7 @@ instance prior to generating or validating a token:</p>
         </ul>
     </div>
 
+                    
                 
             </div>
         </div>
@@ -633,7 +629,7 @@ instance prior to generating or validating a token:</p>
                         <p>
                             <!--Built with love by the Laminas team with the help of our
                             <a href="https://github.com/mezzio/mezzio-csrf/graphs/contributors">contributors</a>.<br>-->
-                            &copy; 2020 <a href="https://getlaminas.org/">Laminas Project</a> a Series of LF Projects, LLC.
+                            &copy; 2021 <a href="https://getlaminas.org/">Laminas Project</a> a Series of LF Projects, LLC.
                         </p>
                     </div>
                 </div>

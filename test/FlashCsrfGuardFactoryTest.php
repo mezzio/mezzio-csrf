@@ -22,20 +22,28 @@ class FlashCsrfGuardFactoryTest extends TestCase
 {
     public function testConstructionUsesSaneDefaults(): void
     {
-        $factory = new FlashCsrfGuardFactory();
-        /**
-         * TODO: Replace checks to internal properties
-         */
-        //$this->assertAttributeSame(FlashMessageMiddleware::FLASH_ATTRIBUTE, 'attributeKey', $factory);
+        $factory  = new FlashCsrfGuardFactory();
+        $messages = $this->createMock(FlashMessagesInterface::class);
+        $request  = $this->createMock(ServerRequestInterface::class);
+        $request->expects(self::atLeastOnce())
+                ->method('getAttribute')
+                ->with(FlashMessageMiddleware::FLASH_ATTRIBUTE, false)
+                ->willReturn($messages);
+
+        $factory->createGuardFromRequest($request);
     }
 
     public function testConstructionAllowsPassingAttributeKey(): void
     {
-        $factory = new FlashCsrfGuardFactory('alternate-attribute');
-        /**
-         * TODO: Replace checks to internal properties
-         */
-        //$this->assertAttributeSame('alternate-attribute', 'attributeKey', $factory);
+        $factory  = new FlashCsrfGuardFactory('alternate-attribute');
+        $messages = $this->createMock(FlashMessagesInterface::class);
+        $request  = $this->createMock(ServerRequestInterface::class);
+        $request->expects(self::atLeastOnce())
+                ->method('getAttribute')
+                ->with('alternate-attribute', false)
+                ->willReturn($messages);
+
+        $factory->createGuardFromRequest($request);
     }
 
     public function attributeKeyProvider(): array

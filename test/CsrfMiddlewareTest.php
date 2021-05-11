@@ -32,21 +32,39 @@ class CsrfMiddlewareTest extends TestCase
     public function testConstructorUsesSaneAttributeKeyByDefault(): void
     {
         $middleware = new CsrfMiddleware($this->guardFactory);
-        /**
-         * TODO: Replace checks to internal properties
-         */
-        //$this->assertAttributeSame($this->guardFactory, 'guardFactory', $middleware);
-        //$this->assertAttributeSame($middleware::GUARD_ATTRIBUTE, 'attributeKey', $middleware);
+        $request    = $this->createMock(ServerRequestInterface::class);
+        $guard      = $this->createMock(CsrfGuardInterface::class);
+
+        $this->guardFactory->expects(self::atLeastOnce())
+                           ->method('createGuardFromRequest')
+                           ->with($request)
+                           ->willReturn($guard);
+
+        $request->expects(self::atLeastOnce())
+                ->method('withAttribute')
+                ->with($middleware::GUARD_ATTRIBUTE, $guard)
+                ->willReturn($request);
+
+        $middleware->process($request, $this->createMock(RequestHandlerInterface::class));
     }
 
     public function testConstructorAllowsProvidingAlternateAttributeKey(): void
     {
         $middleware = new CsrfMiddleware($this->guardFactory, 'alternate-key');
-        /**
-         * TODO: Replace checks to internal properties
-         */
-        //$this->assertAttributeSame($this->guardFactory, 'guardFactory', $middleware);
-        //$this->assertAttributeSame('alternate-key', 'attributeKey', $middleware);
+        $request    = $this->createMock(ServerRequestInterface::class);
+        $guard      = $this->createMock(CsrfGuardInterface::class);
+
+        $this->guardFactory->expects(self::atLeastOnce())
+                           ->method('createGuardFromRequest')
+                           ->with($request)
+                           ->willReturn($guard);
+
+        $request->expects(self::atLeastOnce())
+                ->method('withAttribute')
+                ->with('alternate-key', $guard)
+                ->willReturn($request);
+
+        $middleware->process($request, $this->createMock(RequestHandlerInterface::class));
     }
 
     /**
@@ -69,10 +87,9 @@ class CsrfMiddlewareTest extends TestCase
         $request  = $this->createMock(ServerRequestInterface::class);
         $response = $this->createMock(ResponseInterface::class);
 
-        $middleware = $attributeKey !== null
+        $middleware   = $attributeKey !== null
             ? new CsrfMiddleware($this->guardFactory, $attributeKey)
             : new CsrfMiddleware($this->guardFactory);
-
         $attributeKey = $attributeKey ?: CsrfMiddleware::GUARD_ATTRIBUTE;
 
         $this->guardFactory->expects(self::atLeastOnce())
@@ -85,7 +102,10 @@ class CsrfMiddlewareTest extends TestCase
                 ->willReturn($request);
 
         $handler = $this->createMock(RequestHandlerInterface::class);
-        $handler->expects(self::atLeastOnce())->method('handle')->with($request)->willReturn($response);
+        $handler->expects(self::atLeastOnce())
+                ->method('handle')
+                ->with($request)
+                ->willReturn($response);
 
         $this->assertSame($response, $middleware->process($request, $handler));
     }

@@ -23,19 +23,27 @@ class SessionCsrfGuardFactoryTest extends TestCase
     public function testConstructionUsesSaneDefaults(): void
     {
         $factory = new SessionCsrfGuardFactory();
-        /**
-         * TODO: Replace checks to internal properties
-         */
-        //$this->assertAttributeSame(SessionMiddleware::SESSION_ATTRIBUTE, 'attributeKey', $factory);
+        $session = $this->createMock(SessionInterface::class);
+        $request = $this->createMock(ServerRequestInterface::class);
+        $request->expects(self::atLeastOnce())
+                ->method('getAttribute')
+                ->with(SessionMiddleware::SESSION_ATTRIBUTE, false)
+                ->willReturn($session);
+
+        $factory->createGuardFromRequest($request);
     }
 
     public function testConstructionAllowsPassingAttributeKey(): void
     {
         $factory = new SessionCsrfGuardFactory('alternate-attribute');
-        /**
-         * TODO: Replace checks to internal properties
-         */
-        //$this->assertAttributeSame('alternate-attribute', 'attributeKey', $factory);
+        $session = $this->createMock(SessionInterface::class);
+        $request = $this->createMock(ServerRequestInterface::class);
+        $request->expects(self::atLeastOnce())
+                ->method('getAttribute')
+                ->with('alternate-attribute', false)
+                ->willReturn($session);
+
+        $factory->createGuardFromRequest($request);
     }
 
     public function attributeKeyProvider(): array

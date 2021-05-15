@@ -36,7 +36,7 @@
         "psr/http-server-middleware": "^1.0"
     },
     "require-dev": {
-        "laminas/laminas-coding-standard": "~2.1.0",
+        "laminas/laminas-coding-standard": "~2.2.0",
         "mezzio/mezzio-flash": "^1.0",
         "phpunit/phpunit": "^9.3"
     },
@@ -44,7 +44,7 @@
         "phpspec/prophecy": "<1.7.2"
     },
     "suggest": {
-        "mezzio/mezzio-flash": "^1.0.0alpha1 || ^1.0 To back CSRF tokens using flash messages"
+        "mezzio/mezzio-flash": "^1.0 To back CSRF tokens using flash messages"
     },
     "autoload": {
         "psr-4": {

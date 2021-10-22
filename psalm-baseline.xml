@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files psalm-version="4.19.0@a2ad69ae4f5ab1f7d225a8dc4e2ec2d9415ed599">
+  <file src="test/ConfigProviderTest.php">
+    <RedundantCondition occurrences="1">
+      <code>assertIsArray</code>
+    </RedundantCondition>
+  </file>
+  <file src="test/CsrfMiddlewareTest.php">
+    <InvalidArgument occurrences="4">
+      <code>$this-&gt;guardFactory</code>
+      <code>$this-&gt;guardFactory</code>
+      <code>$this-&gt;guardFactory</code>
+      <code>$this-&gt;guardFactory</code>
+    </InvalidArgument>
+    <TooManyTemplateParams occurrences="1">
+      <code>MockObject&lt;CsrfGuardFactoryInterface&gt;</code>
+    </TooManyTemplateParams>
+  </file>
+  <file src="test/FlashCsrfGuardTest.php">
+    <TooManyTemplateParams occurrences="1">
+      <code>MockObject&lt;FlashMessagesInterface&gt;</code>
+    </TooManyTemplateParams>
+  </file>
+  <file src="test/SessionCsrfGuardTest.php">
+    <TooManyTemplateParams occurrences="1">
+      <code>MockObject&lt;SessionInterface&gt;</code>
+    </TooManyTemplateParams>
+  </file>
+</files>

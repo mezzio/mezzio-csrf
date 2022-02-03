@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<psalm
+    errorLevel="3"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="https://getpsalm.org/schema/config"
+    xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
+    errorBaseline="psalm-baseline.xml"
+>
+    <projectFiles>
+        <directory name="src"/>
+        <directory name="test"/>
+        <ignoreFiles>
+            <directory name="vendor"/>
+        </ignoreFiles>
+    </projectFiles>
+
+    <issueHandlers>
+        <InternalMethod>
+            <errorLevel type="suppress">
+                <referencedMethod name="PHPUnit\Framework\MockObject\Builder\InvocationMocker::method"/>
+                <referencedMethod name="PHPUnit\Framework\MockObject\Builder\InvocationMocker::willReturn"/>
+                <referencedMethod name="PHPUnit\Framework\MockObject\Builder\InvocationMocker::with"/>
+            </errorLevel>
+        </InternalMethod>
+        <UndefinedClass>
+            <errorLevel type="suppress">
+                <referencedClass name="Zend\Expressive\Csrf\CsrfGuardFactoryInterface" />
+                <referencedClass name="Zend\Expressive\Csrf\FlashCsrfGuardFactory" />
+                <referencedClass name="Zend\Expressive\Csrf\SessionCsrfGuardFactory" />
+                <referencedClass name="Zend\Expressive\Csrf\CsrfMiddleware" />
+            </errorLevel>
+        </UndefinedClass>
+    </issueHandlers>
+</psalm>

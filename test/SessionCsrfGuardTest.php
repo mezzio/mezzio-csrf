@@ -76,6 +76,17 @@ class SessionCsrfGuardTest extends TestCase
     ): void {
         $this->session->expects(self::atLeastOnce())->method('get')->with($csrfKey, '')->willReturn($sessionTokenValue);
         $this->session->expects(self::atLeastOnce())->method('unset')->with($csrfKey);
-        $this->$assertion($this->guard->validateToken($token, $csrfKey));
+        $this->$assertion($this->guard->validateToken($token, $csrfKey, true));
+    }
+
+    public function testValidateTokenWithoutInvalidatingToken(): void
+    {
+        $csrfKey           = '__csrf';
+        $token             = 'token';
+        $sessionTokenValue = 'token';
+
+        $this->session->expects(self::atLeastOnce())->method('get')->with($csrfKey, '')->willReturn($sessionTokenValue);
+        $this->session->expects(self::never())->method('unset')->with($csrfKey);
+        $this->assertTrue($this->guard->validateToken($token, $csrfKey, false));
     }
 }

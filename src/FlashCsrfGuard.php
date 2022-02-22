@@ -26,7 +26,7 @@ class FlashCsrfGuard implements CsrfGuardInterface
         return $token;
     }
 
-    public function validateToken(string $token, string $csrfKey = '__csrf'): bool
+    public function validateToken(string $token, string $csrfKey = '__csrf', bool $invalidateToken = true): bool
     {
         $storedToken = $this->flashMessages->getFlash($csrfKey, '');
         return $token === $storedToken;

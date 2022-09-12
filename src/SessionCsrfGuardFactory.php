@@ -10,8 +10,7 @@ use Psr\Http\Message\ServerRequestInterface;
 
 class SessionCsrfGuardFactory implements CsrfGuardFactoryInterface
 {
-    /** @var string */
-    private $attributeKey;
+    private string $attributeKey;
 
     public function __construct(string $attributeKey = SessionMiddleware::SESSION_ATTRIBUTE)
     {

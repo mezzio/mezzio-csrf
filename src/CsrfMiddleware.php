@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Mezzio\Csrf;
 
+use Mezzio\Csrf\CsrfGuardFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
@@ -23,11 +24,9 @@ class CsrfMiddleware implements MiddlewareInterface
 {
     public const GUARD_ATTRIBUTE = 'csrf';
 
-    /** @var string */
-    private $attributeKey;
+    private string $attributeKey;
 
-    /** @var CsrfGuardFactoryInterface */
-    private $guardFactory;
+    private CsrfGuardFactoryInterface $guardFactory;
 
     public function __construct(
         CsrfGuardFactoryInterface $guardFactory,

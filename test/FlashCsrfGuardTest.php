@@ -11,10 +11,9 @@ use PHPUnit\Framework\TestCase;
 
 class FlashCsrfGuardTest extends TestCase
 {
-    /** @var MockObject<FlashMessagesInterface>  */
-    private $flash;
-    /** @var FlashCsrfGuard */
-    private $guard;
+    /** @var MockObject&FlashMessagesInterface  */
+    private MockObject $flash;
+    private FlashCsrfGuard $guard;
 
     protected function setUp(): void
     {
@@ -39,7 +38,7 @@ class FlashCsrfGuardTest extends TestCase
         $this->flash->expects(self::atLeastOnce())->method('flash')
             ->with(
                 $keyName,
-                $this->callback(function ($token) use (&$expected) {
+                $this->callback(function ($token) use (&$expected): bool {
                     $this->assertMatchesRegularExpression('/^[a-f0-9]{32}$/', $token);
                     $expected = $token;
                     return true;

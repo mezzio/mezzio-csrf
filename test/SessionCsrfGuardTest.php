@@ -12,7 +12,7 @@ use PHPUnit\Framework\TestCase;
 class SessionCsrfGuardTest extends TestCase
 {
     /** @var MockObject&SessionInterface */
-    private MockObject $session;
+    private SessionInterface $session;
     private SessionCsrfGuard $guard;
 
     protected function setUp(): void

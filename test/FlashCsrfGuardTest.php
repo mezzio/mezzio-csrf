@@ -12,7 +12,7 @@ use PHPUnit\Framework\TestCase;
 class FlashCsrfGuardTest extends TestCase
 {
     /** @var MockObject&FlashMessagesInterface  */
-    private MockObject $flash;
+    private FlashMessagesInterface $flash;
     private FlashCsrfGuard $guard;
 
     protected function setUp(): void

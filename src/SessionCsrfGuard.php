@@ -25,10 +25,12 @@ class SessionCsrfGuard implements CsrfGuardInterface
         return $token;
     }
 
-    public function validateToken(string $token, string $csrfKey = '__csrf'): bool
+    public function validateToken(string $token, string $csrfKey = '__csrf', bool $invalidateToken = true): bool
     {
         $storedToken = $this->session->get($csrfKey, '');
-        $this->session->unset($csrfKey);
+        if ($invalidateToken) {
+            $this->session->unset($csrfKey);
+        }
         return $token === $storedToken;
     }
 }

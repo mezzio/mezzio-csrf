@@ -11,10 +11,9 @@ use PHPUnit\Framework\TestCase;
 
 class SessionCsrfGuardTest extends TestCase
 {
-    /** @var MockObject<SessionInterface> */
-    private $session;
-    /** @var SessionCsrfGuard */
-    private $guard;
+    /** @var MockObject&SessionInterface */
+    private SessionInterface $session;
+    private SessionCsrfGuard $guard;
 
     protected function setUp(): void
     {
@@ -39,7 +38,7 @@ class SessionCsrfGuardTest extends TestCase
         $this->session->expects(self::atLeastOnce())->method('set')
             ->with(
                 $keyName,
-                $this->callback(function ($token) use (&$expected) {
+                $this->callback(function ($token) use (&$expected): bool {
                     $this->assertMatchesRegularExpression('/^[a-f0-9]{32}$/', $token);
                     $expected = $token;
                     return true;

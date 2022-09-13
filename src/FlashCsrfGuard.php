@@ -11,8 +11,7 @@ use function random_bytes;
 
 class FlashCsrfGuard implements CsrfGuardInterface
 {
-    /** @var FlashMessagesInterface */
-    private $flashMessages;
+    private FlashMessagesInterface $flashMessages;
 
     public function __construct(FlashMessagesInterface $flashMessages)
     {

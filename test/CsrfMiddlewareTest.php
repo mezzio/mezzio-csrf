@@ -15,8 +15,8 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 class CsrfMiddlewareTest extends TestCase
 {
-    /** @var MockObject<CsrfGuardFactoryInterface> */
-    private $guardFactory;
+    /** @var MockObject&CsrfGuardFactoryInterface */
+    private CsrfGuardFactoryInterface $guardFactory;
 
     protected function setUp(): void
     {

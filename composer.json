@@ -43,8 +43,8 @@
     "require-dev": {
         "laminas/laminas-coding-standard": "~2.4.0",
         "mezzio/mezzio-flash": "^1.3",
-        "phpunit/phpunit": "^9.5.11",
-        "vimeo/psalm": "^4.19"
+        "phpunit/phpunit": "^9.5.26",
+        "vimeo/psalm": "^4.29.0"
     },
     "conflict": {
         "phpspec/prophecy": "<1.7.2",

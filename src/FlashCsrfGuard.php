@@ -11,11 +11,8 @@ use function random_bytes;
 
 class FlashCsrfGuard implements CsrfGuardInterface
 {
-    private FlashMessagesInterface $flashMessages;
-
-    public function __construct(FlashMessagesInterface $flashMessages)
+    public function __construct(private FlashMessagesInterface $flashMessages)
     {
-        $this->flashMessages = $flashMessages;
     }
 
     public function generateToken(string $keyName = '__csrf'): string

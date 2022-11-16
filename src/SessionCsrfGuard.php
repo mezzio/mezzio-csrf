@@ -11,11 +11,8 @@ use function random_bytes;
 
 class SessionCsrfGuard implements CsrfGuardInterface
 {
-    private SessionInterface $session;
-
-    public function __construct(SessionInterface $session)
+    public function __construct(private SessionInterface $session)
     {
-        $this->session = $session;
     }
 
     public function generateToken(string $keyName = '__csrf'): string

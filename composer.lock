@@ -1164,21 +1164,21 @@
         },
         {
             "name": "mezzio/mezzio-flash",
-            "version": "1.5.0",
+            "version": "1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mezzio/mezzio-flash.git",
-                "reference": "595a8f6815b0d2ef738d277829d4d246b09b459e"
+                "reference": "7eb98cb9dd0a712a261605dffa2dfc4fb7f2919b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mezzio/mezzio-flash/zipball/595a8f6815b0d2ef738d277829d4d246b09b459e",
-                "reference": "595a8f6815b0d2ef738d277829d4d246b09b459e",
+                "url": "https://api.github.com/repos/mezzio/mezzio-flash/zipball/7eb98cb9dd0a712a261605dffa2dfc4fb7f2919b",
+                "reference": "7eb98cb9dd0a712a261605dffa2dfc4fb7f2919b",
                 "shasum": ""
             },
             "require": {
                 "mezzio/mezzio-session": "^1.0",
-                "php": "^7.4 || ~8.0.0 || ~8.1.0",
+                "php": "~8.0.0 || ~8.1.0 || ~8.2.0",
                 "psr/http-server-middleware": "^1.0"
             },
             "conflict": {
@@ -1186,9 +1186,9 @@
             },
             "require-dev": {
                 "laminas/laminas-coding-standard": "~2.4.0",
-                "phpunit/phpunit": "^9.5.24",
-                "psalm/plugin-phpunit": "^0.16.1",
-                "vimeo/psalm": "^4.9"
+                "phpunit/phpunit": "^9.5.26",
+                "psalm/plugin-phpunit": "^0.18.0",
+                "vimeo/psalm": "^5.0.0"
             },
             "type": "library",
             "extra": {
@@ -1230,7 +1230,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2022-09-14T08:14:01+00:00"
+            "time": "2022-12-06T01:59:45+00:00"
         },
         {
             "name": "myclabs/deep-copy",

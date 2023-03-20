@@ -1,29 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.19.0@a2ad69ae4f5ab1f7d225a8dc4e2ec2d9415ed599">
+<files psalm-version="5.8.0@9cf4f60a333f779ad3bc704a555920e81d4fdcda">
   <file src="test/ConfigProviderTest.php">
-    <RedundantCondition occurrences="1">
+    <RedundantCondition>
       <code>assertIsArray</code>
     </RedundantCondition>
+    <UnusedClass>
+      <code>ConfigProviderTest</code>
+    </UnusedClass>
+  </file>
+  <file src="test/CsrfMiddlewareFactoryTest.php">
+    <UnusedClass>
+      <code>CsrfMiddlewareFactoryTest</code>
+    </UnusedClass>
   </file>
   <file src="test/CsrfMiddlewareTest.php">
-    <InvalidArgument occurrences="4">
-      <code>$this-&gt;guardFactory</code>
-      <code>$this-&gt;guardFactory</code>
-      <code>$this-&gt;guardFactory</code>
-      <code>$this-&gt;guardFactory</code>
-    </InvalidArgument>
-    <TooManyTemplateParams occurrences="1">
-      <code>MockObject&lt;CsrfGuardFactoryInterface&gt;</code>
-    </TooManyTemplateParams>
+    <UnusedClass>
+      <code>CsrfMiddlewareTest</code>
+    </UnusedClass>
+  </file>
+  <file src="test/FlashCsrfGuardFactoryTest.php">
+    <UnusedClass>
+      <code>FlashCsrfGuardFactoryTest</code>
+    </UnusedClass>
   </file>
   <file src="test/FlashCsrfGuardTest.php">
-    <TooManyTemplateParams occurrences="1">
-      <code>MockObject&lt;FlashMessagesInterface&gt;</code>
-    </TooManyTemplateParams>
+    <UnusedClass>
+      <code>FlashCsrfGuardTest</code>
+    </UnusedClass>
+  </file>
+  <file src="test/SessionCsrfGuardFactoryTest.php">
+    <UnusedClass>
+      <code>SessionCsrfGuardFactoryTest</code>
+    </UnusedClass>
   </file>
   <file src="test/SessionCsrfGuardTest.php">
-    <TooManyTemplateParams occurrences="1">
-      <code>MockObject&lt;SessionInterface&gt;</code>
-    </TooManyTemplateParams>
+    <UnusedClass>
+      <code>SessionCsrfGuardTest</code>
+    </UnusedClass>
   </file>
 </files>

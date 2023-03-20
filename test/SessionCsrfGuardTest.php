@@ -6,6 +6,7 @@ namespace MezzioTest\Csrf;
 
 use Mezzio\Csrf\SessionCsrfGuard;
 use Mezzio\Session\SessionInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -21,7 +22,7 @@ class SessionCsrfGuardTest extends TestCase
         $this->guard   = new SessionCsrfGuard($this->session);
     }
 
-    public function keyNameProvider(): array
+    public static function keyNameProvider(): array
     {
         return [
             'default' => ['__csrf'],
@@ -29,9 +30,7 @@ class SessionCsrfGuardTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider keyNameProvider
-     */
+    #[DataProvider('keyNameProvider')]
     public function testGenerateTokenStoresTokenInSessionAndReturnsIt(string $keyName): void
     {
         $expected = '';
@@ -49,7 +48,7 @@ class SessionCsrfGuardTest extends TestCase
         $this->assertSame($expected, $token);
     }
 
-    public function tokenValidationProvider(): array
+    public static function tokenValidationProvider(): array
     {
         // @codingStandardsIgnoreStart
         return [
@@ -64,9 +63,7 @@ class SessionCsrfGuardTest extends TestCase
         // @codingStandardsIgnoreEnd
     }
 
-    /**
-     * @dataProvider tokenValidationProvider
-     */
+    #[DataProvider('tokenValidationProvider')]
     public function testValidateTokenValidatesProvidedTokenAgainstOneStoredInSession(
         string $token,
         string $csrfKey,

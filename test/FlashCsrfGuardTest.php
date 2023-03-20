@@ -6,6 +6,7 @@ namespace MezzioTest\Csrf;
 
 use Mezzio\Csrf\FlashCsrfGuard;
 use Mezzio\Flash\FlashMessagesInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -21,7 +22,7 @@ class FlashCsrfGuardTest extends TestCase
         $this->guard = new FlashCsrfGuard($this->flash);
     }
 
-    public function keyNameProvider(): array
+    public static function keyNameProvider(): array
     {
         return [
             'default' => ['__csrf'],
@@ -29,9 +30,7 @@ class FlashCsrfGuardTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider keyNameProvider
-     */
+    #[DataProvider('keyNameProvider')]
     public function testGenerateTokenStoresTokenInFlashAndReturnsIt(string $keyName): void
     {
         $expected = '';
@@ -49,7 +48,7 @@ class FlashCsrfGuardTest extends TestCase
         $this->assertSame((string) $expected, $token);
     }
 
-    public function tokenValidationProvider(): array
+    public static function tokenValidationProvider(): array
     {
         // @codingStandardsIgnoreStart
         return [
@@ -64,9 +63,7 @@ class FlashCsrfGuardTest extends TestCase
         // @codingStandardsIgnoreEnd
     }
 
-    /**
-     * @dataProvider tokenValidationProvider
-     */
+    #[DataProvider('tokenValidationProvider')]
     public function testValidateTokenValidatesProvidedTokenAgainstOneStoredInFlash(
         string $token,
         string $csrfKey,

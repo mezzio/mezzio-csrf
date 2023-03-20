@@ -9,6 +9,7 @@ use Mezzio\Csrf\SessionCsrfGuard;
 use Mezzio\Csrf\SessionCsrfGuardFactory;
 use Mezzio\Session\SessionInterface;
 use Mezzio\Session\SessionMiddleware;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -40,7 +41,7 @@ class SessionCsrfGuardFactoryTest extends TestCase
         $factory->createGuardFromRequest($request);
     }
 
-    public function attributeKeyProvider(): array
+    public static function attributeKeyProvider(): array
     {
         return [
             'default' => [SessionMiddleware::SESSION_ATTRIBUTE],
@@ -48,9 +49,7 @@ class SessionCsrfGuardFactoryTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider attributeKeyProvider
-     */
+    #[DataProvider('attributeKeyProvider')]
     public function testCreateGuardFromRequestRaisesExceptionIfAttributeDoesNotContainSession(string $attribute): void
     {
         $request = $this->createMock(ServerRequestInterface::class);
@@ -62,9 +61,7 @@ class SessionCsrfGuardFactoryTest extends TestCase
         $factory->createGuardFromRequest($request);
     }
 
-    /**
-     * @dataProvider attributeKeyProvider
-     */
+    #[DataProvider('attributeKeyProvider')]
     public function testCreateGuardFromRequestReturnsCsrfGuardWithSessionWhenPresent(string $attribute): void
     {
         $session = $this->createMock(SessionInterface::class);

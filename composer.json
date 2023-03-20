@@ -43,7 +43,7 @@
     "require-dev": {
         "laminas/laminas-coding-standard": "~2.5.0",
         "mezzio/mezzio-flash": "^1.6",
-        "phpunit/phpunit": "^9.6.5",
+        "phpunit/phpunit": "^10.0.17",
         "vimeo/psalm": "^5.8"
     },
     "conflict": {

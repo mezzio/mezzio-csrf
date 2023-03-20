@@ -9,6 +9,7 @@ use Mezzio\Csrf\FlashCsrfGuard;
 use Mezzio\Csrf\FlashCsrfGuardFactory;
 use Mezzio\Flash\FlashMessageMiddleware;
 use Mezzio\Flash\FlashMessagesInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -40,7 +41,7 @@ class FlashCsrfGuardFactoryTest extends TestCase
         $factory->createGuardFromRequest($request);
     }
 
-    public function attributeKeyProvider(): array
+    public static function attributeKeyProvider(): array
     {
         return [
             'default' => [FlashMessageMiddleware::FLASH_ATTRIBUTE],
@@ -48,9 +49,7 @@ class FlashCsrfGuardFactoryTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider attributeKeyProvider
-     */
+    #[DataProvider('attributeKeyProvider')]
     public function testCreateGuardFromRequestRaisesExceptionIfAttributeDoesNotContainFlash(string $attribute): void
     {
         $request = $this->createMock(ServerRequestInterface::class);
@@ -62,9 +61,7 @@ class FlashCsrfGuardFactoryTest extends TestCase
         $factory->createGuardFromRequest($request);
     }
 
-    /**
-     * @dataProvider attributeKeyProvider
-     */
+    #[DataProvider('attributeKeyProvider')]
     public function testCreateGuardFromRequestReturnsCsrfGuardWithSessionWhenPresent(string $attribute): void
     {
         $flash   = $this->createMock(FlashMessagesInterface::class);

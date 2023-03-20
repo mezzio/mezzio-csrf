@@ -7,6 +7,7 @@ namespace MezzioTest\Csrf;
 use Mezzio\Csrf\CsrfGuardFactoryInterface;
 use Mezzio\Csrf\CsrfGuardInterface;
 use Mezzio\Csrf\CsrfMiddleware;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
@@ -64,7 +65,7 @@ class CsrfMiddlewareTest extends TestCase
     /**
      * @return array<string, array<null|string>>
      */
-    public function attributeKeyProvider(): array
+    public static function attributeKeyProvider(): array
     {
         return [
             'null-default' => [null],
@@ -72,9 +73,7 @@ class CsrfMiddlewareTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider attributeKeyProvider
-     */
+    #[DataProvider('attributeKeyProvider')]
     public function testProcessDelegatesNewRequestContainingGeneratedGuardInstance(?string $attributeKey = null): void
     {
         $guard    = $this->createMock(CsrfGuardInterface::class);

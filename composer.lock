@@ -1081,31 +1081,31 @@
         },
         {
             "name": "mezzio/mezzio-flash",
-            "version": "1.6.0",
+            "version": "1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mezzio/mezzio-flash.git",
-                "reference": "7eb98cb9dd0a712a261605dffa2dfc4fb7f2919b"
+                "reference": "2ea0d987e08cd2ec5e77f88912746c9a4a075276"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mezzio/mezzio-flash/zipball/7eb98cb9dd0a712a261605dffa2dfc4fb7f2919b",
-                "reference": "7eb98cb9dd0a712a261605dffa2dfc4fb7f2919b",
+                "url": "https://api.github.com/repos/mezzio/mezzio-flash/zipball/2ea0d987e08cd2ec5e77f88912746c9a4a075276",
+                "reference": "2ea0d987e08cd2ec5e77f88912746c9a4a075276",
                 "shasum": ""
             },
             "require": {
                 "mezzio/mezzio-session": "^1.0",
-                "php": "~8.0.0 || ~8.1.0 || ~8.2.0",
+                "php": "~8.1.0 || ~8.2.0",
                 "psr/http-server-middleware": "^1.0"
             },
             "conflict": {
                 "zendframework/zend-expressive-flash": "*"
             },
             "require-dev": {
-                "laminas/laminas-coding-standard": "~2.4.0",
-                "phpunit/phpunit": "^9.5.26",
-                "psalm/plugin-phpunit": "^0.18.0",
-                "vimeo/psalm": "^5.0.0"
+                "laminas/laminas-coding-standard": "~2.5.0",
+                "phpunit/phpunit": "^10.2.2",
+                "psalm/plugin-phpunit": "^0.18.4",
+                "vimeo/psalm": "^5.13.1"
             },
             "type": "library",
             "extra": {
@@ -1147,7 +1147,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2022-12-06T01:59:45+00:00"
+            "time": "2023-06-28T00:22:07+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -3967,16 +3967,16 @@
         },
         {
             "name": "vimeo/psalm",
-            "version": "5.13.0",
+            "version": "5.13.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vimeo/psalm.git",
-                "reference": "a0a9c27630bcf8301ee78cb06741d2907d8c9fef"
+                "reference": "086b94371304750d1c673315321a55d15fc59015"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vimeo/psalm/zipball/a0a9c27630bcf8301ee78cb06741d2907d8c9fef",
-                "reference": "a0a9c27630bcf8301ee78cb06741d2907d8c9fef",
+                "url": "https://api.github.com/repos/vimeo/psalm/zipball/086b94371304750d1c673315321a55d15fc59015",
+                "reference": "086b94371304750d1c673315321a55d15fc59015",
                 "shasum": ""
             },
             "require": {
@@ -4067,9 +4067,9 @@
             ],
             "support": {
                 "issues": "https://github.com/vimeo/psalm/issues",
-                "source": "https://github.com/vimeo/psalm/tree/5.13.0"
+                "source": "https://github.com/vimeo/psalm/tree/5.13.1"
             },
-            "time": "2023-06-24T17:05:12+00:00"
+            "time": "2023-06-27T16:39:49+00:00"
         },
         {
             "name": "webimpress/coding-standard",

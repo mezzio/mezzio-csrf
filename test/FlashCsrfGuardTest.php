@@ -45,7 +45,7 @@ class FlashCsrfGuardTest extends TestCase
             );
 
         $token = $this->guard->generateToken($keyName);
-        $this->assertSame((string) $expected, $token);
+        $this->assertSame($expected, $token);
     }
 
     public static function tokenValidationProvider(): array

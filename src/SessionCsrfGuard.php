@@ -11,7 +11,7 @@ use function random_bytes;
 
 class SessionCsrfGuard implements CsrfGuardInterface
 {
-    public function __construct(private SessionInterface $session)
+    public function __construct(private readonly SessionInterface $session)
     {
     }
 

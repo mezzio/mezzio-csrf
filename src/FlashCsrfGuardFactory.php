@@ -10,7 +10,7 @@ use Psr\Http\Message\ServerRequestInterface;
 
 class FlashCsrfGuardFactory implements CsrfGuardFactoryInterface
 {
-    public function __construct(private string $attributeKey = FlashMessageMiddleware::FLASH_ATTRIBUTE)
+    public function __construct(private readonly string $attributeKey = FlashMessageMiddleware::FLASH_ATTRIBUTE)
     {
     }
 

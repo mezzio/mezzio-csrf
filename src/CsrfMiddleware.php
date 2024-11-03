@@ -25,8 +25,8 @@ class CsrfMiddleware implements MiddlewareInterface
     public const GUARD_ATTRIBUTE = 'csrf';
 
     public function __construct(
-        private CsrfGuardFactoryInterface $guardFactory,
-        private string $attributeKey = self::GUARD_ATTRIBUTE
+        private readonly CsrfGuardFactoryInterface $guardFactory,
+        private readonly string $attributeKey = self::GUARD_ATTRIBUTE
     ) {
     }
 

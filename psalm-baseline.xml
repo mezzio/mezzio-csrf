@@ -1,41 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="5.17.0@c620f6e80d0abfca532b00bda366062aaedf6e5d">
+<files psalm-version="6.13.1@1e3b7f0a8ab32b23197b91107adc0a7ed8a05b51">
   <file src="test/ConfigProviderTest.php">
     <RedundantCondition>
-      <code>assertIsArray</code>
+      <code><![CDATA[assertIsArray]]></code>
     </RedundantCondition>
     <UnusedClass>
-      <code>ConfigProviderTest</code>
+      <code><![CDATA[ConfigProviderTest]]></code>
     </UnusedClass>
   </file>
   <file src="test/CsrfMiddlewareFactoryTest.php">
     <UnusedClass>
-      <code>CsrfMiddlewareFactoryTest</code>
+      <code><![CDATA[CsrfMiddlewareFactoryTest]]></code>
     </UnusedClass>
   </file>
   <file src="test/CsrfMiddlewareTest.php">
     <UnusedClass>
-      <code>CsrfMiddlewareTest</code>
+      <code><![CDATA[CsrfMiddlewareTest]]></code>
     </UnusedClass>
   </file>
   <file src="test/FlashCsrfGuardFactoryTest.php">
     <UnusedClass>
-      <code>FlashCsrfGuardFactoryTest</code>
+      <code><![CDATA[FlashCsrfGuardFactoryTest]]></code>
     </UnusedClass>
   </file>
   <file src="test/FlashCsrfGuardTest.php">
     <UnusedClass>
-      <code>FlashCsrfGuardTest</code>
+      <code><![CDATA[FlashCsrfGuardTest]]></code>
     </UnusedClass>
   </file>
   <file src="test/SessionCsrfGuardFactoryTest.php">
     <UnusedClass>
-      <code>SessionCsrfGuardFactoryTest</code>
+      <code><![CDATA[SessionCsrfGuardFactoryTest]]></code>
     </UnusedClass>
   </file>
   <file src="test/SessionCsrfGuardTest.php">
     <UnusedClass>
-      <code>SessionCsrfGuardTest</code>
+      <code><![CDATA[SessionCsrfGuardTest]]></code>
     </UnusedClass>
   </file>
 </files>

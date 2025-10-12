@@ -18,13 +18,6 @@
     </projectFiles>
 
     <issueHandlers>
-        <InternalMethod>
-            <errorLevel type="suppress">
-                <referencedMethod name="PHPUnit\Framework\MockObject\Builder\InvocationMocker::method"/>
-                <referencedMethod name="PHPUnit\Framework\MockObject\Builder\InvocationMocker::willReturn"/>
-                <referencedMethod name="PHPUnit\Framework\MockObject\Builder\InvocationMocker::with"/>
-            </errorLevel>
-        </InternalMethod>
         <UndefinedClass>
             <errorLevel type="suppress">
                 <referencedClass name="Zend\Expressive\Csrf\CsrfGuardFactoryInterface" />
@@ -33,5 +26,11 @@
                 <referencedClass name="Zend\Expressive\Csrf\CsrfMiddleware" />
             </errorLevel>
         </UndefinedClass>
+        <MissingOverrideAttribute>
+            <errorLevel type="suppress">
+                <directory name="src" />
+                <directory name="test" />
+            </errorLevel>
+        </MissingOverrideAttribute>
     </issueHandlers>
 </psalm>

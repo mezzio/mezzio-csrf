@@ -2076,31 +2076,31 @@
         },
         {
             "name": "mezzio/mezzio-flash",
-            "version": "1.9.0",
+            "version": "1.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mezzio/mezzio-flash.git",
-                "reference": "366439125d4b015439e468a59c32f91099ecf0b5"
+                "reference": "b47a023f5afec7f26af160ae5fa10fdb2463e185"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mezzio/mezzio-flash/zipball/366439125d4b015439e468a59c32f91099ecf0b5",
-                "reference": "366439125d4b015439e468a59c32f91099ecf0b5",
+                "url": "https://api.github.com/repos/mezzio/mezzio-flash/zipball/b47a023f5afec7f26af160ae5fa10fdb2463e185",
+                "reference": "b47a023f5afec7f26af160ae5fa10fdb2463e185",
                 "shasum": ""
             },
             "require": {
                 "mezzio/mezzio-session": "^1.0",
-                "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0",
+                "php": "~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0",
                 "psr/http-server-middleware": "^1.0"
             },
             "conflict": {
                 "zendframework/zend-expressive-flash": "*"
             },
             "require-dev": {
-                "laminas/laminas-coding-standard": "~2.5.0",
-                "phpunit/phpunit": "^10.5.36",
-                "psalm/plugin-phpunit": "^0.19.0",
-                "vimeo/psalm": "^5.26.1"
+                "laminas/laminas-coding-standard": "~3.1.0",
+                "phpunit/phpunit": "^11.5.42",
+                "psalm/plugin-phpunit": "^0.19.5",
+                "vimeo/psalm": "^6.13.1"
             },
             "type": "library",
             "extra": {
@@ -2142,7 +2142,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2024-10-16T21:13:18+00:00"
+            "time": "2025-10-12T20:02:20+00:00"
         },
         {
             "name": "myclabs/deep-copy",

@@ -13,7 +13,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ServerRequestInterface;
 
-class FlashCsrfGuardFactoryTest extends TestCase
+final class FlashCsrfGuardFactoryTest extends TestCase
 {
     public function testConstructionUsesSaneDefaults(): void
     {

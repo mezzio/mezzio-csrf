@@ -13,7 +13,7 @@ use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-class CsrfMiddlewareFactoryTest extends TestCase
+final class CsrfMiddlewareFactoryTest extends TestCase
 {
     public function testFactoryReturnsMiddlewareUsingDefaultAttributeAndConfiguredGuardFactory(): void
     {

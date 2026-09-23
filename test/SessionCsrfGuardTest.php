@@ -10,7 +10,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-class SessionCsrfGuardTest extends TestCase
+final class SessionCsrfGuardTest extends TestCase
 {
     /** @var MockObject&SessionInterface */
     private SessionInterface $session;

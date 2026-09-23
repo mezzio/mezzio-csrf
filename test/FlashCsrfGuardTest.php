@@ -10,7 +10,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-class FlashCsrfGuardTest extends TestCase
+final class FlashCsrfGuardTest extends TestCase
 {
     /** @var MockObject&FlashMessagesInterface  */
     private FlashMessagesInterface $flash;

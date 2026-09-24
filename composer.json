@@ -41,7 +41,7 @@
         "psr/http-server-middleware": "^1.0"
     },
     "require-dev": {
-        "boundwize/structarmed": "^0.17.12",
+        "boundwize/structarmed": "^0.18.0",
         "laminas/laminas-coding-standard": "~3.1.0",
         "mezzio/mezzio-flash": "^1.9",
         "phpunit/phpunit": "^11.5.42",

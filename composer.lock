@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4ae14602950834eaba4d46ec14ed1a52",
+    "content-hash": "ac8605d69ef29e6318b089fe9e600277",
     "packages": [
         {
             "name": "dflydev/fig-cookies",
@@ -1249,20 +1249,21 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-10-10T08:53:11+00:00"
+            "time": "2026-10-10T08:53:11+00:00",
+            "published-time": "2026-10-10T08:54:08+00:00"
         },
         {
             "name": "boundwize/structarmed",
-            "version": "0.19.9",
+            "version": "0.20.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/boundwize/structarmed.git",
-                "reference": "70dbcde7773bf2b65f7bc924191e3ebb57236a3f"
+                "reference": "f137d01587115832993a09ffdf62fca5128612d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/boundwize/structarmed/zipball/70dbcde7773bf2b65f7bc924191e3ebb57236a3f",
-                "reference": "70dbcde7773bf2b65f7bc924191e3ebb57236a3f",
+                "url": "https://api.github.com/repos/boundwize/structarmed/zipball/f137d01587115832993a09ffdf62fca5128612d3",
+                "reference": "f137d01587115832993a09ffdf62fca5128612d3",
                 "shasum": ""
             },
             "require": {
@@ -1319,7 +1320,7 @@
             ],
             "support": {
                 "issues": "https://github.com/boundwize/structarmed/issues",
-                "source": "https://github.com/boundwize/structarmed/tree/0.19.9"
+                "source": "https://github.com/boundwize/structarmed/tree/0.20.0"
             },
             "funding": [
                 {
@@ -1327,7 +1328,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-10-24T14:18:54+00:00"
+            "time": "2026-10-29T16:56:10+00:00",
+            "published-time": "2026-10-29T16:56:45+00:00"
         },
         {
             "name": "composer/pcre",
@@ -1941,7 +1943,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-09-29T22:11:39+00:00"
+            "time": "2026-09-29T22:11:39+00:00",
+            "published-time": "2026-09-29T22:12:43+00:00"
         },
         {
             "name": "kelunik/certificate",
@@ -2473,7 +2476,8 @@
                 "issues": "https://github.com/nikic/PHP-Parser/issues",
                 "source": "https://github.com/nikic/PHP-Parser/tree/v5.9.0"
             },
-            "time": "2026-09-13T18:51:52+00:00"
+            "time": "2026-09-13T18:51:52+00:00",
+            "published-time": "2026-09-13T18:53:16+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -5823,5 +5827,5 @@
     "platform-overrides": {
         "php": "8.2.99"
     },
-    "plugin-api-version": "2.9.0"
+    "plugin-api-version": "2.11.0"
 }

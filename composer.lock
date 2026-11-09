@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ac8605d69ef29e6318b089fe9e600277",
+    "content-hash": "57babd5f40b3878027c75b6a0440b6b3",
     "packages": [
         {
             "name": "dflydev/fig-cookies",
@@ -1254,16 +1254,16 @@
         },
         {
             "name": "boundwize/structarmed",
-            "version": "0.20.0",
+            "version": "0.21.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/boundwize/structarmed.git",
-                "reference": "f137d01587115832993a09ffdf62fca5128612d3"
+                "reference": "aceafaded72331ef1754b16f5dea34834f6be4a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/boundwize/structarmed/zipball/f137d01587115832993a09ffdf62fca5128612d3",
-                "reference": "f137d01587115832993a09ffdf62fca5128612d3",
+                "url": "https://api.github.com/repos/boundwize/structarmed/zipball/aceafaded72331ef1754b16f5dea34834f6be4a3",
+                "reference": "aceafaded72331ef1754b16f5dea34834f6be4a3",
                 "shasum": ""
             },
             "require": {
@@ -1320,7 +1320,7 @@
             ],
             "support": {
                 "issues": "https://github.com/boundwize/structarmed/issues",
-                "source": "https://github.com/boundwize/structarmed/tree/0.20.0"
+                "source": "https://github.com/boundwize/structarmed/tree/0.21.8"
             },
             "funding": [
                 {
@@ -1328,8 +1328,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-10-29T16:56:10+00:00",
-            "published-time": "2026-10-29T16:56:45+00:00"
+            "time": "2026-11-08T23:46:25+00:00",
+            "published-time": "2026-11-08T23:46:55+00:00"
         },
         {
             "name": "composer/pcre",
